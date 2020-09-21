@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FiHeart } from 'react-icons/fi'
+import { FiHeart, FiDollarSign } from 'react-icons/fi'
 import { Box, Button, Flex, Tag, TagLabel, Image, Divider } from '@chakra-ui/core'
 
 const Event = ({ title, datetime_utc, type, stats, performers, venue }) => {
@@ -38,7 +38,9 @@ const Event = ({ title, datetime_utc, type, stats, performers, venue }) => {
         <Box py="1">
           <Box as="span" color="gray.600" fontSize="sm">
             <Flex>
-              { new Date(datetime_utc).toLocaleString('default', { month: 'long' }) }
+              <Box as="span">{ new Date(datetime_utc).toLocaleString('default', { month: 'long' }) }</Box>
+              &nbsp;
+              <Box as="span">{ new Date(datetime_utc).getDate() }</Box>
               <Divider orientation="vertical"/>
               { new Date(datetime_utc).toLocaleString('en-US', { hour: 'numeric', hour12: true }) }
             </Flex>
@@ -49,7 +51,10 @@ const Event = ({ title, datetime_utc, type, stats, performers, venue }) => {
         </Box>
         <Box py="2">
           <Flex justify="space-between" align="center">
-            <Box as="span" color="gray.600" fontSize="sm">{stats.lowest_sg_base_price}</Box>
+
+            <Box as="span" color="gray.600" fontSize="sm">
+              {stats.lowest_sg_base_price ? `$ ${stats.lowest_sg_base_price}` : 'free' }
+            </Box>
             <Box as={ FiHeart } color="gray.600"></Box>
           </Flex>
         </Box>
