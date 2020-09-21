@@ -1,19 +1,30 @@
 import { useState, useEffect } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import { connect } from 'react-redux'
+import ReactPaginate from 'react-paginate'
 import { Grid, Stack, Heading, Divider, Skeleton, Flex } from '@chakra-ui/core'
 
 import { fetchEvents } from '../store/actions'
 import PageLayout from '../layouts/PageLayout'
 import EventsList from '../components/EventsList'
-import Pagination from '../components/Pagination'
 
-const Home = ({ dispatch, events, loading, meta, error }) => {
+const Home = () => {
+  const dispatch = useDispatch()
 
-  const [ currentPage, setCurrentPage ] = useState(1)
+  const events = useSelector(state => state.events.events)
+  const meta = useSelector(state => state.events.meta)
+  const loading = useSelector(state => state.events.loading)
+  const error = useSelector(state => state.events.error)
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageClick = (data) => {
+    setCurrentPage(data)
+  }
 
   useEffect(() => {
-    dispatch(fetchEvents(2))
-  }, [dispatch])
+    dispatch(fetchEvents(currentPage))
+  }, [currentPage])
 
   const renderEvents = () => {
     if (loading) {
@@ -21,7 +32,7 @@ const Home = ({ dispatch, events, loading, meta, error }) => {
      return (
         <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {data.map(item => (
-            <div key="item">
+            <div key={item}>
               <Skeleton height="20px" my="10px" />
               <Skeleton height="20px" my="10px" />
               <Skeleton height="20px" my="10px" />
@@ -39,12 +50,21 @@ const Home = ({ dispatch, events, loading, meta, error }) => {
         <Heading as="h5" size="lg">SEINET CLONE</Heading>
         <Divider />
       </Stack>
+
       {renderEvents()}
 
       <Stack align="center">
-        <Flex align="center">
-          <Pagination totalPages={Math.ceil(meta.total / 25)} currentPage={currentPage} />
-        </Flex>
+      <ReactPaginate
+        previousLabel={"prev"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        totalPages={Math.ceil(meta.total / 25)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        subContainerClassName={"pagination"}
+      />
       </Stack>
     </PageLayout>
   )

@@ -31,3 +31,44 @@ main {
   top: 8px;
   left: 16px;
 }
+
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+}
+.pagination > .active > a{
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+.pagination > li > a{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.pagination > li > a:active {
+  color: #000;
+  border: 1px solid #000;
+  outline: none;
+}
+
+.pagination > .active {
+  color: #000;
+  border: 1px solid #000;
+  outline: none;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  color: white;
+  border: 1px solid #000;
+  border-radius: 50%;
+  outline: none;
+}
+.pagination > li > a, .pagination > li > span{
+  color: #000;
+}
