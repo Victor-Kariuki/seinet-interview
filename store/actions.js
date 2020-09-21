@@ -11,14 +11,15 @@ export const fetchEventsError = (error) => ({
   payload: error
 })
 
-export function fetchEvents() {
+export function fetchEvents(pageNumber) {
   return async (dispatch) => {
     dispatch({ type: FETCH_EVENTS })
     try {
       const response = await $http({
-        url: `/events?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_CLIENT_SECRET}`,
+        url: `/events?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_CLIENT_SECRET}&per_page=25&page=${pageNumber}`,
         method: 'GET'
       })
+      console.log(response.data.meta)
       return dispatch(fetchEventsSuccess(response.data))
     } catch (error) {
       console.log(error)
