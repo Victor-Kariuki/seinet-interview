@@ -12,6 +12,7 @@ export const fetchEventsError = (error) => ({
 })
 
 export function fetchEvents(pageNumber) {
+  console.log(pageNumber)
   return async (dispatch) => {
     dispatch({ type: FETCH_EVENTS })
     try {

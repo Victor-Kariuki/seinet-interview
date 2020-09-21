@@ -19,7 +19,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageClick = (data) => {
-    setCurrentPage(data)
+    setCurrentPage(data.selected)
   }
 
   useEffect(() => {
@@ -58,9 +58,9 @@ const Home = () => {
         previousLabel={"prev"}
         nextLabel={"next"}
         breakLabel={"..."}
-        totalPages={Math.ceil(meta.total / 25)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        pageCount={Math.ceil(meta.total / 25)}
+        marginPagesDisplayed={5}
+        pageRangeDisplayed={2}
         onPageChange={handlePageClick}
         containerClassName={"pagination"}
         subContainerClassName={"pagination"}
