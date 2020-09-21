@@ -24,8 +24,8 @@ const Event = ({ title, datetime_utc, type, stats, performers, venue }) => {
           objectFit="cover"
           height="150px"
         />
-        <Tag variantColor="red.500" position="absolute" top="8px" right="16px" size="sm">
-          <Box as="span" fontSize="xs" color="white" fontWeight="semibold" textTransform="uppercase">
+        <Tag variant="solid" variantColor="red" position="absolute" top="8px" right="16px" size="sm">
+          <Box fontSize="xs" textTransform="uppercase" fontWeight="semibold">
             {type}
           </Box>
         </Tag>

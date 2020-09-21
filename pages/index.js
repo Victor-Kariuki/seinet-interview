@@ -53,18 +53,19 @@ const Home = () => {
 
       {renderEvents()}
 
-      <Stack align="center">
-      <ReactPaginate
-        previousLabel={"prev"}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        pageCount={Math.ceil(meta.total / 25)}
-        marginPagesDisplayed={5}
-        pageRangeDisplayed={2}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        subContainerClassName={"pagination"}
-      />
+      <Stack align="center" p="6">
+        <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          pageCount={Math.ceil(meta.total / 25)}
+          marginPagesDisplayed={5}
+          pageRangeDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
+        />
       </Stack>
     </PageLayout>
   )

@@ -38,11 +38,7 @@ main {
   list-style: none;
   outline: none;
 }
-.pagination > .active > a{
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-}
+
 .pagination > li > a{
   color: black;
   float: left;
@@ -51,20 +47,7 @@ main {
   border-radius: 50%;
 }
 
-.pagination > li > a:active {
-  color: #000;
-  border: 1px solid #000;
-  outline: none;
-}
-
-.pagination > .active {
-  color: #000;
-  border: 1px solid #000;
-  outline: none;
-}
-
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-  color: white;
   border: 1px solid #000;
   border-radius: 50%;
   outline: none;
